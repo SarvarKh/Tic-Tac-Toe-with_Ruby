@@ -30,6 +30,8 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/EndOfLine:
+  EnforcedStyle: lf
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
