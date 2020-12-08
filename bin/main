@@ -56,6 +56,18 @@ puts ""
 puts "#{user_x} won!"
 puts "Congratulations!"
 
-
+# End the game
+# Restart?
+puts ""
+puts "=----------- Do you want to play again? -----------="
+puts "Enter yes or no."
+restart = gets.chomp
+if restart == "yes"
+  #Start the game again
+elsif restart == "no"
+  puts "====================== The End ======================"
+else
+  puts "Please enter only 'yes' or 'no', others inputs are invalid!"
+end
 
 
