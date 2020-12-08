@@ -8,6 +8,17 @@ puts '**                          **'
 puts '******************************'
 puts "---Let's play Tic-Tac-Toe.---"
 
+# Input usernames
+puts ""
+puts "Enter user 'X' name."
+user_x = gets.chomp
+puts "Welcome #{user_x}! - User 'X'"
+
+puts ""
+puts "Enter user 'O' name."
+user_o = gets.chomp
+puts "Welcome #{user_o}! - User 'O'"
+
 
 
 
