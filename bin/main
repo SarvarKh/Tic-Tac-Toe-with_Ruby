@@ -22,6 +22,7 @@ puts "Welcome #{user_o}! - User 'O'"
 # Readme
 puts ""
 puts ""
+puts "The game instructions: how to play this game?"
 puts "#{user_x} and #{user_o}, to play the game, one shal select the number from table below!"
 puts "Please note you must select only numbers from 1 to 9!"
 puts ""
