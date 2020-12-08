@@ -24,11 +24,28 @@ puts ''
 puts ''
 puts 'The game instructions: how to play this game?'
 puts "#{user_x} and #{user_o}, to play the game, one shal select the number from table below!"
-puts 'Please note you must select only numbers from 1 to 9!'
+puts 'Please note you must select only numbers from 0 to 8!'
 puts ''
-puts '123'
-puts '456'
-puts '789'
+puts '0 1 2'
+puts '3 4 5'
+puts '6 7 8'
+
+$board = [
+  '', '', '',
+  '', '', '',
+  '', '', ''
+]
+
+def print_board
+  puts ""
+  print $board[0..2]
+  puts ""
+  print $board[3..5]
+  puts ""
+  print $board[6..8]
+end
+
+print_board()
 
 # Start the game
 puts ''
