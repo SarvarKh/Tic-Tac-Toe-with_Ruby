@@ -45,6 +45,17 @@ puts "#{user_o} - User 'O' select the number."
 user_o_step = gets.chomp
 puts "Your move is displayed on the board"
 
+# if user O matches winning combination
+puts ""
+puts ""
+puts "#{user_o} won!"
+puts "Congratulations!"
+# if user X matches winning combination
+puts ""
+puts ""
+puts "#{user_x} won!"
+puts "Congratulations!"
+
 
 
 
