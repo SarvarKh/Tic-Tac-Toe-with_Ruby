@@ -19,6 +19,16 @@ puts "Enter user 'O' name."
 user_o = gets.chomp
 puts "Welcome #{user_o}! - User 'O'"
 
+# Readme
+puts ""
+puts ""
+puts "#{user_x} and #{user_o}, to play the game, one shal select the number from table below!"
+puts "Please note you must select only numbers from 1 to 9!"
+puts ""
+puts "123"
+puts "456"
+puts "789"
+
 
 
 
