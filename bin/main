@@ -29,6 +29,22 @@ puts "123"
 puts "456"
 puts "789"
 
+# Start the game
+puts ""
+puts ""
+puts "#{user_x} - User 'X' select the number."
+user_x_step = gets.chomp
+puts "Your move is displayed on the board"
+
+puts ""
+puts "Now, it is other player's turn"
+
+puts ""
+puts ""
+puts "#{user_o} - User 'O' select the number."
+user_o_step = gets.chomp
+puts "Your move is displayed on the board"
+
 
 
 
