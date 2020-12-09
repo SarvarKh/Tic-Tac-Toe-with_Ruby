@@ -64,7 +64,7 @@ while i <= 5
   puts ''
   puts "#{user_x} - User 'x' select the number."
   user_x_step = gets.chomp
-  if user_x_step.to_i > 0 && user_x_step.to_i < 10
+  if user_x_step.to_i.positive? && user_x_step.to_i < 10
     puts "Your move is displayed on the board #{user_x_step}"
     print_board(user_x_step.to_i, 'x')
   else
@@ -80,7 +80,7 @@ while i <= 5
   puts ''
   puts "#{user_o} - User 'o' select the number."
   user_o_step = gets.chomp
-  if user_o_step.to_i > 0 && user_o_step.to_i < 10
+  if user_o_step.to_i.positive? && user_o_step.to_i < 10
     puts "Your move is displayed on the board #{user_o_step}"
     print_board(user_o_step.to_i, 'o')
   else
