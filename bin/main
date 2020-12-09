@@ -9,19 +9,28 @@ puts '******************************'
 puts "---Let's play Tic-Tac-Toe.---"
 
 # Input usernames
+def username_validity(name)
+  if name == ""
+    puts "Player's name mustn't be left blank."
+    exit
+  else
+    puts "Welcome #{name}!"
+  end
+end
+
 puts ''
 puts "Enter user 'X' name."
 user_x = gets.chomp
-puts "Welcome #{user_x}! - User 'X'"
+username_validity(user_x)
 
 puts ''
 puts "Enter user 'O' name."
 user_o = gets.chomp
-puts "Welcome #{user_o}! - User 'O'"
+username_validity(user_o)
 
 # Readme
 puts ''
-puts "Let's have look to the game rools!"
+puts "Let's have look to the game rules!"
 gets.chomp
 puts ''
 puts 'The game instructions: how to play this game?'
@@ -82,6 +91,7 @@ while i <= 5
   i += 1
   if i == 5
     puts "Selected move is a draw move!"
+  end
 end
 
 # if user matches winning combination
