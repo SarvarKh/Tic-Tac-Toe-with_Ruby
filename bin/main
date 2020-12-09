@@ -21,47 +21,55 @@ puts "Welcome #{user_o}! - User 'O'"
 
 # Readme
 puts ''
+puts "Let's have look to the game rools!"
+gets.chomp
 puts ''
 puts 'The game instructions: how to play this game?'
-puts "#{user_x} and #{user_o}, to play the game, one shal select the number from table below!"
-puts 'Please note you must select only numbers from 0 to 8!'
+puts 'Each player shall select the number from table below! (only numbers from 1 to 9!)'
 puts ''
-puts '0 1 2'
-puts '3 4 5'
-puts '6 7 8'
+puts '1 2 3'
+puts '4 5 6'
+puts '7 8 9'
 
-$board = [
-  '', '', '',
-  '', '', '',
-  '', '', ''
-]
+def print_board(selected_cell, user_turn)
+  board = [
+    '', '', '',
+    '', '', '',
+    '', '', ''
+  ]
 
-def print_board
+  board[selected_cell-1] = user_turn
+
   puts ""
-  print $board[0..2]
+  print board[0..2]
   puts ""
-  print $board[3..5]
+  print board[3..5]
   puts ""
-  print $board[6..8]
+  print board[6..8]
 end
 
-print_board()
-
 # Start the game
-puts ''
-puts ''
-puts "#{user_x} - User 'X' select the number."
-user_x_step = gets.chomp
-puts "Your move is displayed on the board #{user_x_step}"
+i = 1
+while i <= 5
+  puts ''
+  puts ''
+  puts "#{user_x} - User 'x' select the number."
+  user_x_step = gets.chomp
+  puts "Your move is displayed on the board #{user_x_step}"
+  print_board(user_x_step.to_i, "x")
 
-puts ''
-puts "Now, it is other player's turn"
+  puts ''
+  puts "Now, it is other player's turn"
 
-puts ''
-puts ''
-puts "#{user_o} - User 'O' select the number."
-user_o_step = gets.chomp
-puts "Your move is displayed on the board #{user_o_step}"
+  puts ''
+  puts ''
+  puts "#{user_o} - User 'o' select the number."
+  user_o_step = gets.chomp
+  puts "Your move is displayed on the board #{user_o_step}"
+  print_board(user_o_step.to_i, "o")
+
+  i += 1
+end
 
 # if user O matches winning combination
 puts ''
