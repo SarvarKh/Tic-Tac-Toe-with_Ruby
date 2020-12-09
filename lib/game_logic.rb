@@ -46,7 +46,7 @@ class InnerBoard
   def self.board_for_x
     @board_for_x
   end
-  
+
   def self.board_for_o
     @board_for_o
   end
