@@ -71,6 +71,8 @@ while i <= 5
   if user_o_step.to_i.positive? && user_o_step.to_i < 10
     puts "Your move [#{user_o_step}] is displayed on the board"
     Board.print_board(user_o_step.to_i, 'o')
+    InnerBoard.move_inner_board(user_o_step.to_i, $board_for_o)
+    InnerBoard.check_win_combo($board_for_o, user_o)
   else
     puts 'Selected move is invalid'
     return
