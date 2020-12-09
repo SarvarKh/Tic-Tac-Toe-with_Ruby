@@ -47,10 +47,12 @@ class InnerBoard
 
   def self.check_win_combo(board, user)
     i = 0
-    winner_print = "\n\n\n************************\n**                    **\n**   #{user} won!     **\n**                    **\n************************\n\n"
+    winner_print = "\n\n\n************************\n**                    **\n**    #{user} won!     **\n**                    **\n************************\n\n"
     while i < @@winning_combinations.size
-      return print winner_print if @@winning_combinations[i].all? { |number| board.include? number }
-      
+      if @@winning_combinations[i].all? { |number| board.include? number }
+        puts winner_print 
+        exit
+      end      
       i += 1
     end
   end
