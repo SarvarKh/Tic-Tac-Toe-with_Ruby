@@ -1,2 +1,134 @@
 #!/usr/bin/env ruby
-puts 'Hello world!'
+
+# Welcome method
+puts '******************************'
+puts '**                          **'
+puts '**        Hello folks!      **'
+puts '**                          **'
+puts '******************************'
+puts "---Let's play Tic-Tac-Toe.---"
+
+# Input usernames
+def username_validity(name, first_username = '')
+  if name == '' || name == first_username
+    puts "Player's name mustn't be left blank or be the same."
+    exit
+  else
+    puts "Welcome #{name}!"
+  end
+end
+
+puts ''
+puts "Enter user 'X' name."
+user_x = gets.chomp
+username_validity(user_x)
+
+puts ''
+puts "Enter user 'O' name."
+user_o = gets.chomp
+username_validity(user_o, user_x)
+
+# Readme
+puts ''
+puts "Let's have look to the game rules!"
+gets.chomp
+puts ''
+puts 'The game instructions: how to play this game?'
+puts 'Each player shall select the number from table below! (only numbers from 1 to 9!)'
+puts ''
+puts '1 2 3'
+puts '4 5 6'
+puts '7 8 9'
+
+def print_board(selected_cell, user_turn)
+  board = [
+    '', '', '',
+    '', '', '',
+    '', '', ''
+  ]
+
+  board[selected_cell - 1] = user_turn
+
+  puts ''
+  print board[0..2]
+  puts ''
+  print board[3..5]
+  puts ''
+  print board[6..8]
+end
+
+# Start the game
+i = 1
+while i <= 5
+  puts ''
+  puts ''
+  puts "#{user_x} - User 'x' select the number."
+  user_x_step = gets.chomp
+  if user_x_step.to_i.positive? && user_x_step.to_i < 10
+    puts "Your move is displayed on the board #{user_x_step}"
+    print_board(user_x_step.to_i, 'x')
+  else
+    puts 'Selected move is invalid'
+    return
+  end
+
+  puts ''
+  puts "Now, it is other player's turn"
+  puts 'Please select only from available moves'
+
+  puts ''
+  puts ''
+  puts "#{user_o} - User 'o' select the number."
+  user_o_step = gets.chomp
+  if user_o_step.to_i.positive? && user_o_step.to_i < 10
+    puts "Your move is displayed on the board #{user_o_step}"
+    print_board(user_o_step.to_i, 'o')
+  else
+    puts 'Selected move is invalid'
+    return
+  end
+
+  if i == 5
+    puts ''
+    puts ''
+    puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
+    puts '-=*                                    -=*'
+    puts '-=*    Selected move is a draw move!   -=*'
+    puts '-=*                                    -=*'
+    puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
+  end
+
+  i += 1
+end
+
+# if user matches winning combination
+def winning_combination(user)
+  puts ''
+  puts ''
+  puts "#{user} won!"
+  puts 'Congratulations!'
+end
+
+# End the game
+puts ''
+puts ''
+puts '=----------- Do you want to play again? -----------='
+puts "----------- Enter 'yes' or 'no' -----------"
+restart = gets.chomp
+
+# Restart?
+if restart == 'yes'
+  puts ''
+  puts ''
+  puts ''
+  puts ''
+  puts '-*--*--*--*- You restarted the game! -*--*--*--*-'
+  puts ''
+  puts ''
+  puts ''
+  # restart method
+elsif restart == 'no'
+  puts '====================== The End ======================'
+else
+  puts "Please enter only 'yes' or 'no', others inputs are invalid!"
+end
