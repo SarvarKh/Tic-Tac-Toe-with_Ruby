@@ -38,13 +38,13 @@ def print_board(selected_cell, user_turn)
     '', '', ''
   ]
 
-  board[selected_cell-1] = user_turn
+  board[selected_cell - 1] = user_turn
 
-  puts ""
+  puts ''
   print board[0..2]
-  puts ""
+  puts ''
   print board[3..5]
-  puts ""
+  puts ''
   print board[6..8]
 end
 
@@ -55,20 +55,33 @@ while i <= 5
   puts ''
   puts "#{user_x} - User 'x' select the number."
   user_x_step = gets.chomp
-  puts "Your move is displayed on the board #{user_x_step}"
-  print_board(user_x_step.to_i, "x")
+  if user_x_step.to_i > 0 && user_x_step.to_i < 10    
+    puts "Your move is displayed on the board #{user_x_step}"
+    print_board(user_x_step.to_i, 'x')
+  else
+    puts 'Selected move is invalid'
+    return
+  end
 
   puts ''
   puts "Now, it is other player's turn"
+  puts 'Please select only from available moves'
 
   puts ''
   puts ''
   puts "#{user_o} - User 'o' select the number."
   user_o_step = gets.chomp
-  puts "Your move is displayed on the board #{user_o_step}"
-  print_board(user_o_step.to_i, "o")
+  if user_o_step.to_i > 0 && user_o_step.to_i < 10
+    puts "Your move is displayed on the board #{user_o_step}"
+    print_board(user_o_step.to_i, 'o')
+  else
+    puts 'Selected move is invalid'
+    return
+  end
 
   i += 1
+  if i == 5
+    puts "Selected move is a draw move!"
 end
 
 # if user O matches winning combination
