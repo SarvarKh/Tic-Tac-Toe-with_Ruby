@@ -18,6 +18,8 @@ class Board
 end
 
 class InnerBoard
+  # attr_accessor :board_for_x, :board_for_o
+
   @@winning_combinations = [
     [1, 2, 3],
     [4, 5, 6],
@@ -29,17 +31,24 @@ class InnerBoard
     [3, 5, 7]
   ]
 
-  $board_for_x = [
+  @@board_for_x = [
     '', '', '',
     '', '', '',
     '', '', ''
   ]
 
-  $board_for_o = [
+  @@board_for_o = [
     '', '', '',
     '', '', '',
     '', '', ''
   ]
+
+  def self.board_for_x
+    @@board_for_x
+  end
+  def self.board_for_o
+    @@board_for_o
+  end
 
   def self.move_inner_board(move, board)
     board[move - 1] = move

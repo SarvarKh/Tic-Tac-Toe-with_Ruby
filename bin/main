@@ -53,8 +53,8 @@ while i <= 5
   if user_x_step.to_i.positive? && user_x_step.to_i < 10
     puts "Your move [#{user_x_step}] is displayed on the board"
     Board.print_board(user_x_step.to_i, 'x')
-    InnerBoard.move_inner_board(user_x_step.to_i, $board_for_x)
-    InnerBoard.check_win_combo($board_for_x, user_x)
+    InnerBoard.move_inner_board(user_x_step.to_i, InnerBoard.board_for_x)
+    InnerBoard.check_win_combo(InnerBoard.board_for_x, user_x)
   else
     puts 'Selected move is invalid'
     return
@@ -71,8 +71,8 @@ while i <= 5
   if user_o_step.to_i.positive? && user_o_step.to_i < 10
     puts "Your move [#{user_o_step}] is displayed on the board"
     Board.print_board(user_o_step.to_i, 'o')
-    InnerBoard.move_inner_board(user_o_step.to_i, $board_for_o)
-    InnerBoard.check_win_combo($board_for_o, user_o)
+    InnerBoard.move_inner_board(user_o_step.to_i, InnerBoard.board_for_o)
+    InnerBoard.check_win_combo(InnerBoard.board_for_o, user_o)
   else
     puts 'Selected move is invalid'
     return
