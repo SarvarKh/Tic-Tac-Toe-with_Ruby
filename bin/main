@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require "./lib/game_logic.rb"
+
 # Welcome method
 puts '******************************'
 puts '**                          **'
