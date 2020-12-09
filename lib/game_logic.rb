@@ -29,15 +29,29 @@ class InnerBoard
     [3, 5, 7]
   ]
 
-  @@board_for_x = [
+  $board_for_x = [
     '', '', '',
     '', '', '',
     '', '', ''
   ]
 
-  @@board_for_o = [
+  $board_for_o = [
     '', '', '',
     '', '', '',
     '', '', ''
   ]
+
+  def self.move_inner_board(move, board)
+    board[move - 1] = move
+  end
+
+  def self.check_win_combo(board, user)
+    i = 0
+    winner_print = "\n\n\n************************\n**                    **\n**   #{user} won!     **\n**                    **\n************************\n\n"
+    while i < @@winning_combinations.size
+      return print winner_print if @@winning_combinations[i].all? { |number| board.include? number }
+      
+      i += 1
+    end
+  end
 end
