@@ -4,25 +4,18 @@ require './lib/game_logic.rb'
 
 # Welcome method
 class StartGameInterface
-  def initialize(name)
-    @name = name
+  attr_accessor :user_x, :user_o
+
+  def initialize
   end
 
   def welcome
     puts '******************************'
     puts '**                          **'
-    puts '**        Hello folks!      **'
+    puts '**        Hey folks!        **'
     puts '**                          **'
     puts '******************************'
-    puts "---Let's play Tic-Tac-Toe.---"
-  end
-end
-
-# Input usernames
-class Player
-  attr_accessor :user_x, :user_o
-  def initialize(player)
-    @player = player
+    puts "\n---Let's play Tic-Tac-Toe.---"
   end
 
   def get_usernames
@@ -39,31 +32,58 @@ class Player
       username_validity()
     end
   end
+
+  def game_rules
+    puts "\nWelcome #{@user_x} and #{@user_o}!\n"
+    puts "Let's have look to the game rules!"
+    gets.chomp
+    puts ''
+    puts 'The game instructions: how to play this game?'
+    puts 'Each player shall select the number from table below! (only numbers from 1 to 9!)'
+    puts ''
+    puts <<-BOARD
+            1 | 2 | 3 
+          ------------
+            4 | 5 | 6 
+          ------------
+            7 | 8 | 9 
+          BOARD
+  end
 end
 
-players = Player.new("users")
+# Input usernames
+# class Player
+#   attr_accessor :user_x, :user_o
+#   def initialize(player)
+#     @player = player
+#   end
 
-players.get_usernames
-players.username_validity
+#   def get_usernames
+#     puts "\nEnter user 'X' name."
+#     @user_x = gets.chomp
+#     puts "\nEnter user 'O' name."
+#     @user_o = gets.chomp
+#   end
 
+#   def username_validity
+#     while @user_x == '' || @user_o == '' || @user_x == @user_o
+#       puts "\n-!- Player's name mustn't be left blank or be the same."
+#       get_usernames()
+#       username_validity()
+#     end
+#   end
+# end
+
+interaction = StartGameInterface.new
+interaction.welcome
+interaction.get_usernames
+interaction.username_validity
+
+interaction.game_rules
 
 # Readme
 
-puts "Welcome #{players.user_x} and #{players.user_o}!"
-puts ''
-puts "Let's have look to the game rules!"
-gets.chomp
-puts ''
-puts 'The game instructions: how to play this game?'
-puts 'Each player shall select the number from table below! (only numbers from 1 to 9!)'
-puts ''
-puts <<-BOARD
-        1 | 2 | 3 
-       ------------
-        4 | 5 | 6 
-       ------------
-        7 | 8 | 9 
-      BOARD
+
 
 # Start the game
 i = 1
