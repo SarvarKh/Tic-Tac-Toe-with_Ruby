@@ -52,7 +52,7 @@ class StartGameInterface
   end
 
   # Start the game
-  def self.move_x
+  def move_x
     puts "\n\n#{@user_x} - User 'x' select the number."
     user_x_step = gets.chomp
     if user_x_step.to_i.positive? && user_x_step.to_i < 10
@@ -65,15 +65,7 @@ class StartGameInterface
     end
   end
 
-  def self.move_o
-
-  end
-
-  i = 1
-  while i <= 5
-    move_x()
-    puts "\nNow, it is other player's turn\nPlease select only from available moves\n\n"
-
+  def move_o
     puts "#{@user_o} - User 'o' select the number."
     user_o_step = gets.chomp
     if user_o_step.to_i.positive? && user_o_step.to_i < 10
@@ -84,16 +76,25 @@ class StartGameInterface
     else
       puts 'Selected move is invalid'
     end
+  end
 
-    if i == 5
-      puts "\n\n-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*"
-      puts '-=*                                    -=*'
-      puts '-=*    Selected move is a draw move!   -=*'
-      puts '-=*                                    -=*'
-      puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
+  def combined_game_methods
+    i = 1
+    while i <= 5
+      move_x()
+      puts "\nNow, it is other player's turn\nPlease select only from available moves\n\n"
+      move_o()
+  
+      if i == 5
+        puts "\n\n-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*"
+        puts '-=*                                    -=*'
+        puts '-=*    Selected move is a draw move!   -=*'
+        puts '-=*                                    -=*'
+        puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
+      end
+  
+      i += 1
     end
-
-    i += 1
   end
 end
 
@@ -103,6 +104,7 @@ interaction.welcome
 interaction.get_usernames
 interaction.username_validity
 interaction.game_rules
+interaction.combined_game_methods
 
 
 
