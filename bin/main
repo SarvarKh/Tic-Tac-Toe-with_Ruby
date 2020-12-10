@@ -18,7 +18,7 @@ class StartGameInterface
   end
 
   # Get user names
-  def get_usernames
+  def input_usernames
     puts "\nEnter user 'X' name."
     @user_x = gets.chomp
     puts "\nEnter user 'O' name."
@@ -29,8 +29,8 @@ class StartGameInterface
   def username_validity
     while @user_x == '' || @user_o == '' || @user_x == @user_o
       puts "\n-!- Player's name mustn't be left blank or be the same."
-      get_usernames()
-      username_validity()
+      input_usernames.call
+      username_validity.call
     end
   end
 
@@ -41,13 +41,14 @@ class StartGameInterface
     gets.chomp
     puts "\nThe game instructions: how to play this game?"
     puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
-    puts <<-BOARD
-            1 | 2 | 3 
+    puts
+    <<-BOARD
+            1 | 2 | 3
           ------------
-            4 | 5 | 6 
+            4 | 5 | 6
           ------------
-            7 | 8 | 9 
-          BOARD
+            7 | 8 | 9
+    BOARD
   end
 
   # Start the game
@@ -80,10 +81,10 @@ class StartGameInterface
   def combined_game_methods
     i = 1
     while i <= 5
-      move_x()
+      move_x.call
       puts "\nNow, it is other player's turn\nPlease select only from available moves\n\n"
-      move_o()
-  
+      move_o.call
+
       if i == 5
         puts "\n\n-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*"
         puts '-=*                                    -=*'
@@ -91,7 +92,7 @@ class StartGameInterface
         puts '-=*                                    -=*'
         puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
       end
-  
+
       i += 1
     end
   end
@@ -104,7 +105,7 @@ class StartGameInterface
     if restart == 'yes'
       puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
       # restart method
-      restart()
+      restart.call
     elsif restart == 'no'
       puts '====================== The End ======================'
     else
@@ -113,18 +114,18 @@ class StartGameInterface
   end
 
   def restart
-    welcome()
-    get_usernames()
-    username_validity()
-    game_rules()
-    combined_game_methods()
-    end_game()
+    welcome.call
+    input_usernames.call
+    username_validity.call
+    game_rules.call
+    combined_game_methods.call
+    end_game.call
   end
 end
 
 interaction = StartGameInterface.new
 interaction.welcome
-interaction.get_usernames
+interaction.input_usernames
 interaction.username_validity
 interaction.game_rules
 interaction.combined_game_methods
