@@ -18,8 +18,6 @@ class Board
 end
 
 class InnerBoard
-  # attr_accessor :board_for_x, :board_for_o
-
   @winning_combinations = [
     [1, 2, 3],
     [4, 5, 6],

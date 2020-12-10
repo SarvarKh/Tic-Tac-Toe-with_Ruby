@@ -6,8 +6,7 @@ require './lib/game_logic.rb'
 class StartGameInterface
   attr_accessor :user_x, :user_o
 
-  def initialize
-  end
+  def initialize; end
 
   def welcome
     puts '******************************'
@@ -130,13 +129,3 @@ interaction.username_validity
 interaction.game_rules
 interaction.combined_game_methods
 interaction.end_game
-
-# Restart?
-if restart == 'yes'
-  puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
-  # restart method
-elsif restart == 'no'
-  puts '====================== The End ======================'
-else
-  puts "Please enter only 'yes' or 'no', others inputs are invalid!"
-end
