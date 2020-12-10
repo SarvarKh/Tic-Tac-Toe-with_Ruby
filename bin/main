@@ -3,12 +3,20 @@
 require './lib/game_logic.rb'
 
 # Welcome method
-puts '******************************'
-puts '**                          **'
-puts '**        Hello folks!      **'
-puts '**                          **'
-puts '******************************'
-puts "---Let's play Tic-Tac-Toe.---"
+class StartGameInterface
+  def initialize(name)
+    @name = name
+  end
+
+  def welcome
+    puts '******************************'
+    puts '**                          **'
+    puts '**        Hello folks!      **'
+    puts '**                          **'
+    puts '******************************'
+    puts "---Let's play Tic-Tac-Toe.---"
+  end
+end
 
 # Input usernames
 class Player
@@ -31,7 +39,6 @@ class Player
       username_validity()
     end
   end
-  
 end
 
 players = Player.new("users")
@@ -39,24 +46,6 @@ players = Player.new("users")
 players.get_usernames
 players.username_validity
 
-# def username_validity(name, first_username = '')   
-#   while name == '' || name == first_username
-#     puts "Player's name mustn't be left blank or be the same."
-#     name = gets.chomp
-#     username_validity(name, first_username = '')
-#   end
-#   puts "Welcome #{name}!"
-# end
-
-# puts ''
-# puts "Enter user 'X' name."
-# user_x = gets.chomp
-# username_validity(user_x)
-
-# puts ''
-# puts "Enter user 'O' name."
-# user_o = gets.chomp
-# username_validity(user_o, user_x)
 
 # Readme
 
