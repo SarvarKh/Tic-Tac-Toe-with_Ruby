@@ -18,6 +18,7 @@ class StartGameInterface
     puts "\n---Let's play Tic-Tac-Toe.---"
   end
 
+  # Get user names
   def get_usernames
     puts "\nEnter user 'X' name."
     @user_x = gets.chomp
@@ -25,6 +26,7 @@ class StartGameInterface
     @user_o = gets.chomp
   end
 
+  # User names validity check
   def username_validity
     while @user_x == '' || @user_o == '' || @user_x == @user_o
       puts "\n-!- Player's name mustn't be left blank or be the same."
@@ -33,14 +35,13 @@ class StartGameInterface
     end
   end
 
+  # Game explanation
   def game_rules
     puts "\nWelcome #{@user_x} and #{@user_o}!\n"
     puts "Let's have look to the game rules!"
     gets.chomp
-    puts ''
-    puts 'The game instructions: how to play this game?'
-    puts 'Each player shall select the number from table below! (only numbers from 1 to 9!)'
-    puts ''
+    puts "\nThe game instructions: how to play this game?"
+    puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
     puts <<-BOARD
             1 | 2 | 3 
           ------------
@@ -49,89 +50,61 @@ class StartGameInterface
             7 | 8 | 9 
           BOARD
   end
+
+  # Start the game
+  def self.move_x
+    puts "\n\n#{@user_x} - User 'x' select the number."
+    user_x_step = gets.chomp
+    if user_x_step.to_i.positive? && user_x_step.to_i < 10
+      puts "Your move [#{user_x_step}] is displayed on the board"
+      Board.print_board(user_x_step.to_i, 'x')
+      InnerBoard.move_inner_board(user_x_step.to_i, InnerBoard.board_for_x)
+      InnerBoard.check_win_combo(InnerBoard.board_for_x, @user_x)
+    else
+      puts 'Selected move is invalid'
+    end
+  end
+
+  def self.move_o
+
+  end
+
+  i = 1
+  while i <= 5
+    move_x()
+    puts "\nNow, it is other player's turn\nPlease select only from available moves\n\n"
+
+    puts "#{@user_o} - User 'o' select the number."
+    user_o_step = gets.chomp
+    if user_o_step.to_i.positive? && user_o_step.to_i < 10
+      puts "Your move [#{user_o_step}] is displayed on the board"
+      Board.print_board(user_o_step.to_i, 'o')
+      InnerBoard.move_inner_board(user_o_step.to_i, InnerBoard.board_for_o)
+      InnerBoard.check_win_combo(InnerBoard.board_for_o, @user_o)
+    else
+      puts 'Selected move is invalid'
+    end
+
+    if i == 5
+      puts "\n\n-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*"
+      puts '-=*                                    -=*'
+      puts '-=*    Selected move is a draw move!   -=*'
+      puts '-=*                                    -=*'
+      puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
+    end
+
+    i += 1
+  end
 end
 
-# Input usernames
-# class Player
-#   attr_accessor :user_x, :user_o
-#   def initialize(player)
-#     @player = player
-#   end
-
-#   def get_usernames
-#     puts "\nEnter user 'X' name."
-#     @user_x = gets.chomp
-#     puts "\nEnter user 'O' name."
-#     @user_o = gets.chomp
-#   end
-
-#   def username_validity
-#     while @user_x == '' || @user_o == '' || @user_x == @user_o
-#       puts "\n-!- Player's name mustn't be left blank or be the same."
-#       get_usernames()
-#       username_validity()
-#     end
-#   end
-# end
 
 interaction = StartGameInterface.new
 interaction.welcome
 interaction.get_usernames
 interaction.username_validity
-
 interaction.game_rules
 
-# Readme
 
-
-
-# Start the game
-i = 1
-while i <= 5
-  puts ''
-  puts ''
-  puts "#{user_x} - User 'x' select the number."
-  user_x_step = gets.chomp
-  if user_x_step.to_i.positive? && user_x_step.to_i < 10
-    puts "Your move [#{user_x_step}] is displayed on the board"
-    Board.print_board(user_x_step.to_i, 'x')
-    InnerBoard.move_inner_board(user_x_step.to_i, InnerBoard.board_for_x)
-    InnerBoard.check_win_combo(InnerBoard.board_for_x, user_x)
-  else
-    puts 'Selected move is invalid'
-    return
-  end
-
-  puts ''
-  puts "Now, it is other player's turn"
-  puts 'Please select only from available moves'
-
-  puts ''
-  puts ''
-  puts "#{user_o} - User 'o' select the number."
-  user_o_step = gets.chomp
-  if user_o_step.to_i.positive? && user_o_step.to_i < 10
-    puts "Your move [#{user_o_step}] is displayed on the board"
-    Board.print_board(user_o_step.to_i, 'o')
-    InnerBoard.move_inner_board(user_o_step.to_i, InnerBoard.board_for_o)
-    InnerBoard.check_win_combo(InnerBoard.board_for_o, user_o)
-  else
-    puts 'Selected move is invalid'
-    return
-  end
-
-  if i == 5
-    puts ''
-    puts ''
-    puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
-    puts '-=*                                    -=*'
-    puts '-=*    Selected move is a draw move!   -=*'
-    puts '-=*                                    -=*'
-    puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
-  end
-
-  i += 1
-end
 
 # if user matches winning combination
 def winning_combination(user)
