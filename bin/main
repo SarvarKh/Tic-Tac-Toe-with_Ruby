@@ -38,9 +38,13 @@ puts ''
 puts 'The game instructions: how to play this game?'
 puts 'Each player shall select the number from table below! (only numbers from 1 to 9!)'
 puts ''
-puts '1 2 3'
-puts '4 5 6'
-puts '7 8 9'
+puts <<-BOARD
+        1 | 2 | 3 
+       ------------
+        4 | 5 | 6 
+       ------------
+        7 | 8 | 9 
+      BOARD
 
 # Start the game
 i = 1
