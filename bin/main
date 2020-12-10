@@ -41,14 +41,13 @@ class StartGameInterface
     gets.chomp
     puts "\nThe game instructions: how to play this game?"
     puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
-    puts
-    <<-BOARD
+    puts <<-BOARD
             1 | 2 | 3
           ------------
             4 | 5 | 6
           ------------
             7 | 8 | 9
-    BOARD
+         BOARD
   end
 
   # Start the game
@@ -62,6 +61,7 @@ class StartGameInterface
       InnerBoard.check_win_combo(InnerBoard.board_for_x, @user_x)
     else
       puts 'Selected move is invalid'
+      end_game.call
     end
   end
 
@@ -75,15 +75,16 @@ class StartGameInterface
       InnerBoard.check_win_combo(InnerBoard.board_for_o, @user_o)
     else
       puts 'Selected move is invalid'
+      end_game.call
     end
   end
 
   def combined_game_methods
     i = 1
     while i <= 5
-      move_x.call
+      move_x()
       puts "\nNow, it is other player's turn\nPlease select only from available moves\n\n"
-      move_o.call
+      move_o()
 
       if i == 5
         puts "\n\n-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*"
@@ -101,12 +102,18 @@ class StartGameInterface
   def end_game
     puts "\n\n=----------- Do you want to play again? -----------="
     puts "----------- Enter 'yes' or 'no' -----------"
-    restart = gets.chomp
-    if restart == 'yes'
+    @restart = gets.chomp
+    
+    unless @restart == 'yes' || @restart == 'no'
+      puts "\n-!- ATTENTION -!- Please enter only 'yes' or 'no'. Other replies are invalid!"
+      end_game.call
+    end
+
+    if @restart == 'yes'
       puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
       # restart method
-      restart.call
-    elsif restart == 'no'
+      restart()
+    elsif @restart == 'no'
       puts '====================== The End ======================'
     else
       puts "Please enter only 'yes' or 'no', others inputs are invalid!"
@@ -114,12 +121,12 @@ class StartGameInterface
   end
 
   def restart
-    welcome.call
-    input_usernames.call
-    username_validity.call
-    game_rules.call
-    combined_game_methods.call
-    end_game.call
+    welcome()
+    input_usernames()
+    username_validity()
+    game_rules()
+    combined_game_methods()
+    end_game()
   end
 end
 
