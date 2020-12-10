@@ -96,8 +96,32 @@ class StartGameInterface
       i += 1
     end
   end
-end
 
+  # Do you want to end or play again?
+  def end_game
+    puts "\n\n=----------- Do you want to play again? -----------="
+    puts "----------- Enter 'yes' or 'no' -----------"
+    restart = gets.chomp
+    if restart == 'yes'
+      puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
+      # restart method
+      restart()
+    elsif restart == 'no'
+      puts '====================== The End ======================'
+    else
+      puts "Please enter only 'yes' or 'no', others inputs are invalid!"
+    end
+  end
+
+  def restart
+    welcome()
+    get_usernames()
+    username_validity()
+    game_rules()
+    combined_game_methods()
+    end_game()
+  end
+end
 
 interaction = StartGameInterface.new
 interaction.welcome
@@ -105,34 +129,11 @@ interaction.get_usernames
 interaction.username_validity
 interaction.game_rules
 interaction.combined_game_methods
-
-
-
-# if user matches winning combination
-def winning_combination(user)
-  puts ''
-  puts ''
-  puts "#{user} won!"
-  puts 'Congratulations!'
-end
-
-# End the game
-puts ''
-puts ''
-puts '=----------- Do you want to play again? -----------='
-puts "----------- Enter 'yes' or 'no' -----------"
-restart = gets.chomp
+interaction.end_game
 
 # Restart?
 if restart == 'yes'
-  puts ''
-  puts ''
-  puts ''
-  puts ''
-  puts '-*--*--*--*- You restarted the game! -*--*--*--*-'
-  puts ''
-  puts ''
-  puts ''
+  puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
   # restart method
 elsif restart == 'no'
   puts '====================== The End ======================'
