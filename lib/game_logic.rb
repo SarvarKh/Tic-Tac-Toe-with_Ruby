@@ -18,7 +18,10 @@ class Board
 end
 
 class InnerBoard
-  @winning_combinations = [
+  attr_accessor :board_for_x, :board_for_o
+  def initialize; end
+
+  @@winning_combinations = [
     [1, 2, 3],
     [4, 5, 6],
     [7, 8, 9],
@@ -29,35 +32,33 @@ class InnerBoard
     [3, 5, 7]
   ]
 
-  @board_for_x = [
+  @@board_for_x = [
     '', '', '',
     '', '', '',
     '', '', ''
   ]
 
-  @board_for_o = [
+  @@board_for_o = [
     '', '', '',
     '', '', '',
     '', '', ''
   ]
 
-  def self.board_for_x
-    @board_for_x
+  def move_inner_board_x(move)
+    @@board_for_x[move - 1] = move
+    p @@board_for_x
   end
 
-  def self.board_for_o
-    @board_for_o
+  def move_inner_board_o(move)
+    @@board_for_o[move - 1] = move
+    p @@board_for_o
   end
 
-  def self.move_inner_board(move, board)
-    board[move - 1] = move
-  end
-
-  def self.check_win_combo(board, user)
+  def check_win_combo(board, user)
     i = 0
     winner_print = "\n\n\n**************\n**          **\n** #{user} won! **\n**          **\n**************\n\n"
-    while i < @winning_combinations.size
-      if @winning_combinations[i].all? { |number| board.include? number }
+    while i < @@winning_combinations.size
+      if @@winning_combinations[i].all? { |number| board.include? number }
         puts winner_print
         exit
       end

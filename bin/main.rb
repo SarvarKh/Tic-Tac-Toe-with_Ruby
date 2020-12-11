@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require './lib/game_logic.rb'
+require_relative '../lib/game_logic.rb'
 
 # Welcome method
 class StartGameInterface
@@ -9,7 +9,6 @@ class StartGameInterface
   def initialize; end
 
   def welcome
-    puts '******************************'
     puts '**        Hey folks!        **'
     puts "\n---Let's play Tic-Tac-Toe.---"
   end
@@ -49,13 +48,15 @@ class StartGameInterface
 
   # Start the game
   def move_x
+    game_x = InnerBoard.new
+
     puts "\n\n#{@user_x} - User 'x' select the number."
     user_x_step = gets.chomp
     if user_x_step.to_i.positive? && user_x_step.to_i < 10
       puts "Your move [#{user_x_step}] is displayed on the board"
       Board.print_board(user_x_step.to_i, 'x')
-      InnerBoard.move_inner_board(user_x_step.to_i, InnerBoard.board_for_x)
-      InnerBoard.check_win_combo(InnerBoard.board_for_x, @user_x)
+      game_x.move_inner_board_x(user_x_step.to_i)
+      #game_x.check_win_combo(game_x.board_for_x, @user_x)
     else
       puts 'Selected move is invalid'
       end_game.call
@@ -63,13 +64,15 @@ class StartGameInterface
   end
 
   def move_o
+    game_o = InnerBoard.new
+
     puts "#{@user_o} - User 'o' select the number."
     user_o_step = gets.chomp
     if user_o_step.to_i.positive? && user_o_step.to_i < 10
       puts "Your move [#{user_o_step}] is displayed on the board"
       Board.print_board(user_o_step.to_i, 'o')
-      InnerBoard.move_inner_board(user_o_step.to_i, InnerBoard.board_for_o)
-      InnerBoard.check_win_combo(InnerBoard.board_for_o, @user_o)
+      game_o.move_inner_board_o(user_o_step.to_i)
+      #game_o.check_win_combo(game_o.board_for_o, @user_o)
     else
       puts 'Selected move is invalid'
       end_game.call
