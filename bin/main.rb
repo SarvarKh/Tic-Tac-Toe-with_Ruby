@@ -56,7 +56,7 @@ class StartGameInterface
       puts "Your move [#{user_x_step}] is displayed on the board"
       Board.print_board(user_x_step.to_i, 'x')
       game_x.move_inner_board_x(user_x_step.to_i)
-      #game_x.check_win_combo(game_x.board_for_x, @user_x)
+      game_x.check_win_combo_x(@user_x)
     else
       puts 'Selected move is invalid'
       end_game.call
@@ -72,7 +72,7 @@ class StartGameInterface
       puts "Your move [#{user_o_step}] is displayed on the board"
       Board.print_board(user_o_step.to_i, 'o')
       game_o.move_inner_board_o(user_o_step.to_i)
-      #game_o.check_win_combo(game_o.board_for_o, @user_o)
+      game_o.check_win_combo_o(@user_o)
     else
       puts 'Selected move is invalid'
       end_game.call
@@ -109,11 +109,12 @@ class StartGameInterface
       end_game.call
     end
 
-    if @restart == 'yes'
+    case @restart
+    when 'yes'
       puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
       # restart method
       restart
-    elsif @restart == 'no'
+    when 'no'
       puts '====================== The End ======================'
     else
       puts "Please enter only 'yes' or 'no', others inputs are invalid!"

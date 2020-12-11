@@ -46,19 +46,29 @@ class InnerBoard
 
   def move_inner_board_x(move)
     @@board_for_x[move - 1] = move
-    p @@board_for_x
   end
 
   def move_inner_board_o(move)
     @@board_for_o[move - 1] = move
-    p @@board_for_o
   end
 
-  def check_win_combo(board, user)
+  def check_win_combo_x(user)
     i = 0
     winner_print = "\n\n\n**************\n**          **\n** #{user} won! **\n**          **\n**************\n\n"
     while i < @@winning_combinations.size
-      if @@winning_combinations[i].all? { |number| board.include? number }
+      if @@winning_combinations[i].all? { |number| @@board_for_x.include? number }
+        puts winner_print
+        exit
+      end
+      i += 1
+    end
+  end
+
+  def check_win_combo_o(user)
+    i = 0
+    winner_print = "\n\n\n**************\n**          **\n** #{user} won! **\n**          **\n**************\n\n"
+    while i < @@winning_combinations.size
+      if @@winning_combinations[i].all? { |number| @@board_for_o.include? number }
         puts winner_print
         exit
       end
