@@ -47,7 +47,7 @@ class StartGameInterface
             4 | 5 | 6
           ------------
             7 | 8 | 9
-         BOARD
+    BOARD
   end
 
   # Start the game
@@ -103,7 +103,7 @@ class StartGameInterface
     puts "\n\n=----------- Do you want to play again? -----------="
     puts "----------- Enter 'yes' or 'no' -----------"
     @restart = gets.chomp
-    
+
     unless @restart == 'yes' || @restart == 'no'
       puts "\n-!- ATTENTION -!- Please enter only 'yes' or 'no'. Other replies are invalid!"
       end_game.call
