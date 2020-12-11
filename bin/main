@@ -10,10 +10,7 @@ class StartGameInterface
 
   def welcome
     puts '******************************'
-    puts '**                          **'
     puts '**        Hey folks!        **'
-    puts '**                          **'
-    puts '******************************'
     puts "\n---Let's play Tic-Tac-Toe.---"
   end
 
