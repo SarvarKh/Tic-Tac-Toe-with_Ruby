@@ -2,24 +2,14 @@
 
 require_relative '../lib/game_logic.rb'
 
-# Welcome method
-class StartGameInterface
-  attr_accessor :user_x, :user_o
 
-  def initialize; end
+puts '**    Hey folks!    **'
+puts "Let's play Tic-Tac-Toe"
 
-  def welcome
-    puts '**        Hey folks!        **'
-    puts "\n---Let's play Tic-Tac-Toe.---"
-  end
-
-  # Get user names
-  def input_usernames
-    puts "\nEnter user 'X' name."
-    @user_x = gets.chomp
-    puts "\nEnter user 'O' name."
-    @user_o = gets.chomp
-  end
+puts "\nEnter user 'X' name."
+@user_x = gets.chomp
+puts "\nEnter user 'O' name."
+@user_o = gets.chomp
 
   # User names validity check
   def username_validity
@@ -129,7 +119,6 @@ class StartGameInterface
     combined_game_methods
     end_game
   end
-end
 
 interaction = StartGameInterface.new
 interaction.welcome
