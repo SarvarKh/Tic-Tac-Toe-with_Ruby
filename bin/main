@@ -40,7 +40,7 @@ BOARD
     
 
   # Start the game
-  my_board = Board.new
+  my_board = Game.new
 
   puts "#{playerx.name} - select the number."
   move = gets.chomp
@@ -48,7 +48,7 @@ BOARD
   puts my_board.display
 
   puts "Now, it is other player's turn"
-  
+
   puts "#{playero.name} - select the number."
   move = gets.chomp
   my_board.move(move, 'O')
