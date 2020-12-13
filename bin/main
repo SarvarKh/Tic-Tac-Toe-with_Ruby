@@ -45,17 +45,28 @@ BOARD
   def make_move(current_user, sign, my_board)
     puts "#{current_user} - select the number."
     move = gets.chomp
+    while my_board.taken_move?(move, my_board.game_board)
+      puts "Invalid number, please select another number"
+      move = gets.chomp
+      my_board.taken_move?(move, my_board.game_board)
+    end
     my_board.move(move, sign)
     puts my_board.display
+    my_board.turn_counter += 1
+    puts my_board.turn_counter
   end
 
   make_move(playerx.name, playerx.sign, my_board)
   puts "Now, it is other player's turn"
   make_move(playero.name, playero.sign, my_board)
 
+  def current_user(user = playerx)
 
+  end
 
-
+  def trueCounter(tracker)
+    tracker += 1
+  end
 
   # def move_x
   #   game_x = InnerBoard.new
