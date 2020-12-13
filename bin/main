@@ -42,17 +42,19 @@ BOARD
   # Start the game
   my_board = Game.new
 
-  puts "#{playerx.name} - select the number."
-  move = gets.chomp
-  my_board.move(move, 'X')
-  puts my_board.display
+  def make_move(current_user, sign, my_board)
+    puts "#{current_user} - select the number."
+    move = gets.chomp
+    my_board.move(move, sign)
+    puts my_board.display
+  end
 
+  make_move(playerx.name, playerx.sign, my_board)
   puts "Now, it is other player's turn"
+  make_move(playero.name, playero.sign, my_board)
 
-  puts "#{playero.name} - select the number."
-  move = gets.chomp
-  my_board.move(move, 'O')
-  puts my_board.display
+
+
 
 
   # def move_x
