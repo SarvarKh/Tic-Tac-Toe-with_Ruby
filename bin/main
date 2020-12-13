@@ -6,9 +6,9 @@ require_relative '../lib/game_logic.rb'
 puts '**    Hey folks!    **'
 puts "Let's play Tic-Tac-Toe"
 
-puts "\nEnter user 'X' name."
+puts "Enter user x name."
 @user_x = gets.chomp
-puts "\nEnter user 'O' name."
+puts "Enter user o name."
 @user_o = gets.chomp
 
   # User names validity check
