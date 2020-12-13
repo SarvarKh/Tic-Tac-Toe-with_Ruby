@@ -1,40 +1,43 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/game_logic.rb'
+require_relative '../lib/player.rb'
 
 
 puts '**    Hey folks!    **'
 puts "Let's play Tic-Tac-Toe"
 
+playerx = Player.new
+
 puts "Enter user x name."
-@user_x = gets.chomp
+playerx.name = gets.chomp
+while playerx.name == ''
+  puts "Invalid name, enter another name"
+  playerx.name = gets.chomp
+end
+
+playero = Player.new
+
 puts "Enter user o name."
-@user_o = gets.chomp
+playero.name = gets.chomp
+while playero.name == '' || playero.name == playerx.name
+  puts "Invalid name, enter another name"
+  playero.name = gets.chomp
+end
 
-  # User names validity check
-  def username_validity
-    while @user_x == '' || @user_o == '' || @user_x == @user_o
-      puts "\n-!- Player's name mustn't be left blank or be the same."
-      input_usernames.call
-      username_validity.call
-    end
-  end
+# Game rules
+puts "To see the game rules press any button!"
+gets.chomp
+puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
+puts <<-BOARD
+        1 | 2 | 3
+      ------------
+        4 | 5 | 6
+      ------------
+        7 | 8 | 9
+BOARD
 
-  # Game explanation
-  def game_rules
-    puts "\nWelcome #{@user_x} and #{@user_o}!\n"
-    puts "Let's have look to the game rules!"
-    gets.chomp
-    puts "\nThe game instructions: how to play this game?"
-    puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
-    puts <<-BOARD
-            1 | 2 | 3
-          ------------
-            4 | 5 | 6
-          ------------
-            7 | 8 | 9
-    BOARD
-  end
+    
 
   # Start the game
   def move_x
