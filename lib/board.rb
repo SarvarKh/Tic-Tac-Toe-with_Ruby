@@ -17,7 +17,7 @@ class Board
     @board = board
     board[move.to_i - 1] != ''
   end
-
+  
   def display
     [" #{@game_board[0]}  | #{@game_board[1]}  | #{@game_board[2]} ",
      '------------',

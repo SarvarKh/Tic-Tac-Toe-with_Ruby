@@ -56,18 +56,18 @@ BOARD
     puts my_board.turn_counter
   end
 
-  make_move(playerx.name, playerx.sign, my_board)
-  puts "Now, it is other player's turn"
-  make_move(playero.name, playero.sign, my_board)
-
-  def current_user(user = playerx)
-
+  def check_current_user(playerx, playero, turn_counter)
+    turn_counter.even? ? :playerx : :playero
   end
 
-  def trueCounter(tracker)
-    tracker += 1
+  current_user = check_current_user(playerx, playero, my_board.turn_counter)
+  puts current_user.class
+
+  while my_board.turn_counter.to_i < 9
+    make_move(current_user.name, current_user.sign, my_board)
   end
 
+  
   # def move_x
   #   game_x = InnerBoard.new
 
