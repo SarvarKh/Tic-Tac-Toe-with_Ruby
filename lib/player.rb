@@ -1,3 +1,3 @@
 class Player
-  attr_accessor :name
+  attr_accessor :name, :sign
 end

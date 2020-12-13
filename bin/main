@@ -2,14 +2,14 @@
 
 require_relative '../lib/game_logic.rb'
 require_relative '../lib/player.rb'
-
+require_relative '../lib/board.rb'
 
 puts '**    Hey folks!    **'
 puts "Let's play Tic-Tac-Toe"
 
 playerx = Player.new
-
-puts "Enter user x name."
+playerx.sign = 'x'
+puts "Enter user 'X' name."
 playerx.name = gets.chomp
 while playerx.name == ''
   puts "Invalid name, enter another name"
@@ -17,8 +17,8 @@ while playerx.name == ''
 end
 
 playero = Player.new
-
-puts "Enter user o name."
+playero.sign = 'o'
+puts "Enter user 'O' name."
 playero.name = gets.chomp
 while playero.name == '' || playero.name == playerx.name
   puts "Invalid name, enter another name"
@@ -40,21 +40,36 @@ BOARD
     
 
   # Start the game
-  def move_x
-    game_x = InnerBoard.new
+  my_board = Board.new
 
-    puts "\n\n#{@user_x} - User 'x' select the number."
-    user_x_step = gets.chomp
-    if user_x_step.to_i.positive? && user_x_step.to_i < 10
-      puts "Your move [#{user_x_step}] is displayed on the board"
-      Board.print_board(user_x_step.to_i, 'x')
-      game_x.move_inner_board_x(user_x_step.to_i)
-      game_x.check_win_combo_x(@user_x)
-    else
-      puts 'Selected move is invalid'
-      end_game.call
-    end
-  end
+  puts "#{playerx.name} - select the number."
+  move = gets.chomp
+  my_board.move(move, 'X')
+  puts my_board.display
+
+  puts "Now, it is other player's turn"
+  
+  puts "#{playero.name} - select the number."
+  move = gets.chomp
+  my_board.move(move, 'O')
+  puts my_board.display
+
+
+  # def move_x
+  #   game_x = InnerBoard.new
+
+  #   puts "\n\n#{@user_x} - User 'x' select the number."
+  #   user_x_step = gets.chomp
+  #   if user_x_step.to_i.positive? && user_x_step.to_i < 10
+  #     puts "Your move [#{user_x_step}] is displayed on the board"
+  #     Board.print_board(user_x_step.to_i, 'x')
+  #     game_x.move_inner_board_x(user_x_step.to_i)
+  #     game_x.check_win_combo_x(@user_x)
+  #   else
+  #     puts 'Selected move is invalid'
+  #     end_game.call
+  #   end
+  # end
 
   def move_o
     game_o = InnerBoard.new
@@ -123,10 +138,10 @@ BOARD
     end_game
   end
 
-interaction = StartGameInterface.new
-interaction.welcome
-interaction.input_usernames
-interaction.username_validity
-interaction.game_rules
-interaction.combined_game_methods
-interaction.end_game
+# interaction = StartGameInterface.new
+# interaction.welcome
+# interaction.input_usernames
+# interaction.username_validity
+# interaction.game_rules
+# interaction.combined_game_methods
+# interaction.end_game
