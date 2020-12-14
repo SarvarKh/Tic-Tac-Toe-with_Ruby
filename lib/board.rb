@@ -14,7 +14,7 @@ class Board
     @game_board[@user_move.to_i - 1] = @user_sign
     @game_board[@user_move.to_i - 1] = @user_sign
     @user_sign == 'x' ? @boardx << @user_move.to_i : @boardo << @user_move.to_i
-    puts "Hey!!! #{@boardx} #{@boardo}"
+    puts "Hey!!! #{@boardx} #{@boardo}" # to delete
   end
 
   def taken_move?(move, board)
@@ -41,11 +41,9 @@ class Board
     i = 0
     while i < WINNING_COMBINATIONS.size   
       if WINNING_COMBINATIONS[i].all? { |number| @boardx.include? number }
-        puts "#{@current_user} won!"
-        exit
+        return 'playerx'
       elsif WINNING_COMBINATIONS[i].all? { |number| @boardo.include? number }
-        puts "#{@current_user} won!"
-        exit
+        return 'playero'
       end
       i += 1
     end

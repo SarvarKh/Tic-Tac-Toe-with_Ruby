@@ -50,14 +50,25 @@ BOARD
       move = gets.chomp
       my_board.taken_move?(move, my_board.game_board)
     end
-    
-    my_board.move(move, sign, my_board)
 
-    my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
-    
+    my_board.move(move, sign, my_board)
     puts my_board.display
+
+    found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
+    if (found_winner == 'playerx')
+      puts "#{current_user} won!"
+      exit
+    elsif (found_winner == 'playero')
+      puts "#{current_user} won!"
+      exit
+    end
+
     my_board.turn_counter += 1
-    puts my_board.turn_counter
+    if (my_board.turn_counter == 9)
+      puts "It is draw!"
+      exit
+    end
+    puts my_board.turn_counter # to delete
   end
 
   def check_current_user(playerx, playero, turn_counter)
