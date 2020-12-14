@@ -57,7 +57,7 @@ BOARD
   end
 
   def check_current_user(playerx, playero, turn_counter)
-    turn_counter.even? ? :playerx : :playero
+    turn_counter.even? ? playerx : playero
   end
 
   current_user = check_current_user(playerx, playero, my_board.turn_counter)

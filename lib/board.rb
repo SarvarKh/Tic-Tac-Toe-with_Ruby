@@ -2,7 +2,7 @@ class Board
   attr_accessor :game_board, :turn_counter
 
   def initialize
-    @game_board = ['', '', '', '', '', '', '', '', '']
+    @game_board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
     @turn_counter = 0
   end
 
@@ -15,7 +15,7 @@ class Board
   def taken_move?(move, board)
     @move = move
     @board = board
-    board[move.to_i - 1] != ''
+    board[move.to_i - 1] != ' '
   end
   
   def display
