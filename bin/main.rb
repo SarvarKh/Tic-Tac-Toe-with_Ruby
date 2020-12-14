@@ -24,23 +24,20 @@ while playero.name == '' || playero.name == playerx.name
   playero.name = gets.chomp
 end
 
+# Start the game
+my_board = Board.new
+
 # Game rules
 puts 'To see the game rules press any button!'
 gets.chomp
 puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
-puts <<-BOARD
-        1 | 2 | 3
-      ------------
-        4 | 5 | 6
-      ------------
-        7 | 8 | 9
-BOARD
+puts my_board.reference_board
 
-# Start the game
-my_board = Board.new
 
+# Game flow
 def make_move(current_user, sign, my_board)
-  puts "#{current_user} - select the number."
+  puts "#{current_user} - select the number from the table below"
+  puts my_board.reference_board if my_board.turn_counter > 0
   move = gets.chomp
   while my_board.taken_move?(move, my_board.game_board)
     puts 'Invalid number, please select another number'
