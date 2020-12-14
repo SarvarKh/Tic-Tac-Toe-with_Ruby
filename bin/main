@@ -43,7 +43,7 @@ def make_move(current_user, sign, my_board)
   puts "#{current_user} - select the number."
   move = gets.chomp
   while my_board.taken_move?(move, my_board.game_board)
-    puts "Invalid number, please select another number"
+    puts 'Invalid number, please select another number'
     move = gets.chomp
     my_board.taken_move?(move, my_board.game_board)
   end
@@ -52,14 +52,14 @@ def make_move(current_user, sign, my_board)
   puts my_board.display
 
   found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
-  if (found_winner)
+  if found_winner
     puts "#{found_winner} won!"
     exit
   end
 
   my_board.turn_counter += 1
-  if (my_board.turn_counter == 9)
-    puts "It is draw!"
+  if my_board.turn_counter == 9
+    puts 'It is draw!'
     exit
   end
 end
@@ -67,7 +67,6 @@ end
 def check_current_user(playerx, playero, turn_counter)
   turn_counter.to_i.even? ? playerx : playero
 end
-
 
 while my_board.turn_counter.to_i < 9
   current_user = check_current_user(playerx, playero, my_board.turn_counter)

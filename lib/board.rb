@@ -11,6 +11,7 @@ class Board
   def move(user_move, user_sign, board)
     @user_move = user_move
     @user_sign = user_sign
+    @board = board
     @game_board[@user_move.to_i - 1] = @user_sign
     @game_board[@user_move.to_i - 1] = @user_sign
     @user_sign == 'x' ? @boardx << @user_move.to_i : @boardo << @user_move.to_i
@@ -21,7 +22,7 @@ class Board
     @board = board
     board[move.to_i - 1] != ' '
   end
-  
+
   WINNING_COMBINATIONS = [
     [1, 2, 3],
     [4, 5, 6],
@@ -31,19 +32,20 @@ class Board
     [3, 6, 9],
     [1, 5, 9],
     [3, 5, 7]
-  ]
+  ].freeze
 
   def check_winner(boardx, boardo, current_user)
     @boardx = boardx
     @boardo = boardo
     @current_user = current_user
     i = 0
-    while i < WINNING_COMBINATIONS.size   
+    while i < WINNING_COMBINATIONS.size
       if WINNING_COMBINATIONS[i].all? { |number| @boardx.include? number }
         return @current_user
       elsif WINNING_COMBINATIONS[i].all? { |number| @boardo.include? number }
         return @current_user
       end
+
       i += 1
     end
   end
