@@ -11,7 +11,7 @@ playerx.sign = 'x'
 puts "Enter user 'X' name."
 playerx.name = gets.chomp
 while playerx.name == ''
-  puts "Invalid name, enter another name"
+  puts 'Invalid name, enter another name'
   playerx.name = gets.chomp
 end
 
@@ -20,12 +20,12 @@ playero.sign = 'o'
 puts "Enter user 'O' name."
 playero.name = gets.chomp
 while playero.name == '' || playero.name == playerx.name
-  puts "Invalid name, enter another name"
+  puts 'Invalid name, enter another name'
   playero.name = gets.chomp
 end
 
 # Game rules
-puts "To see the game rules press any button!"
+puts 'To see the game rules press any button!'
 gets.chomp
 puts "Each player shall select the number from table below! (only numbers from 1 to 9!)\n"
 puts <<-BOARD
@@ -52,11 +52,8 @@ def make_move(current_user, sign, my_board)
   puts my_board.display
 
   found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
-  if (found_winner == 'playerx')
-    puts "#{current_user} won!"
-    exit
-  elsif (found_winner == 'playero')
-    puts "#{current_user} won!"
+  if (found_winner)
+    puts "#{found_winner} won!"
     exit
   end
 
@@ -65,7 +62,6 @@ def make_move(current_user, sign, my_board)
     puts "It is draw!"
     exit
   end
-  puts my_board.turn_counter # to delete
 end
 
 def check_current_user(playerx, playero, turn_counter)
