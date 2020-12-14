@@ -58,10 +58,7 @@ def make_move(current_user, sign, my_board)
   end
 
   my_board.turn_counter += 1
-  if my_board.turn_counter == 9
-    puts 'It is draw!'
-    exit
-  end
+  puts 'It is draw!' if my_board.turn_counter == 9
 end
 
 def check_current_user(playerx, playero, turn_counter)

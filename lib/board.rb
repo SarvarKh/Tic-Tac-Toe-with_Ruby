@@ -40,11 +40,8 @@ class Board
     @current_user = current_user
     i = 0
     while i < WINNING_COMBINATIONS.size
-      if WINNING_COMBINATIONS[i].all? { |number| @boardx.include? number }
-        return @current_user
-      elsif WINNING_COMBINATIONS[i].all? { |number| @boardo.include? number }
-        return @current_user
-      end
+      return @current_user if WINNING_COMBINATIONS[i].all? { |number| @boardx.include? number }
+      return @current_user if WINNING_COMBINATIONS[i].all? { |number| @boardo.include? number }
 
       i += 1
     end
