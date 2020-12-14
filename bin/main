@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/game_logic.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/board.rb'
 
@@ -37,138 +36,44 @@ puts <<-BOARD
         7 | 8 | 9
 BOARD
 
-    
+# Start the game
+my_board = Board.new
 
-  # Start the game
-  my_board = Board.new
-
-  def make_move(current_user, sign, my_board)
-    puts "#{current_user} - select the number."
+def make_move(current_user, sign, my_board)
+  puts "#{current_user} - select the number."
+  move = gets.chomp
+  while my_board.taken_move?(move, my_board.game_board)
+    puts "Invalid number, please select another number"
     move = gets.chomp
-    while my_board.taken_move?(move, my_board.game_board)
-      puts "Invalid number, please select another number"
-      move = gets.chomp
-      my_board.taken_move?(move, my_board.game_board)
-    end
-
-    my_board.move(move, sign, my_board)
-    puts my_board.display
-
-    found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
-    if (found_winner == 'playerx')
-      puts "#{current_user} won!"
-      exit
-    elsif (found_winner == 'playero')
-      puts "#{current_user} won!"
-      exit
-    end
-
-    my_board.turn_counter += 1
-    if (my_board.turn_counter == 9)
-      puts "It is draw!"
-      exit
-    end
-    puts my_board.turn_counter # to delete
+    my_board.taken_move?(move, my_board.game_board)
   end
 
-  def check_current_user(playerx, playero, turn_counter)
-    turn_counter.to_i.even? ? playerx : playero
+  my_board.move(move, sign, my_board)
+  puts my_board.display
+
+  found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
+  if (found_winner == 'playerx')
+    puts "#{current_user} won!"
+    exit
+  elsif (found_winner == 'playero')
+    puts "#{current_user} won!"
+    exit
   end
 
-
-  while my_board.turn_counter.to_i < 9
-    current_user = check_current_user(playerx, playero, my_board.turn_counter)
-    make_move(current_user.name, current_user.sign, my_board)
+  my_board.turn_counter += 1
+  if (my_board.turn_counter == 9)
+    puts "It is draw!"
+    exit
   end
+  puts my_board.turn_counter # to delete
+end
 
-  
-  # def move_x
-  #   game_x = InnerBoard.new
+def check_current_user(playerx, playero, turn_counter)
+  turn_counter.to_i.even? ? playerx : playero
+end
 
-  #   puts "\n\n#{@user_x} - User 'x' select the number."
-  #   user_x_step = gets.chomp
-  #   if user_x_step.to_i.positive? && user_x_step.to_i < 10
-  #     puts "Your move [#{user_x_step}] is displayed on the board"
-  #     Board.print_board(user_x_step.to_i, 'x')
-  #     game_x.move_inner_board_x(user_x_step.to_i)
-  #     game_x.check_win_combo_x(@user_x)
-  #   else
-  #     puts 'Selected move is invalid'
-  #     end_game.call
-  #   end
-  # end
 
-  def move_o
-    game_o = InnerBoard.new
-
-    puts "#{@user_o} - User 'o' select the number."
-    user_o_step = gets.chomp
-    if user_o_step.to_i.positive? && user_o_step.to_i < 10
-      puts "Your move [#{user_o_step}] is displayed on the board"
-      Board.print_board(user_o_step.to_i, 'o')
-      game_o.move_inner_board_o(user_o_step.to_i)
-      game_o.check_win_combo_o(@user_o)
-    else
-      puts 'Selected move is invalid'
-      end_game.call
-    end
-  end
-
-  def combined_game_methods
-    i = 1
-    while i <= 5
-      move_x
-      puts "\nNow, it is other player's turn\nPlease select only from available moves\n\n"
-      move_o
-
-      if i == 5
-        puts "\n\n-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*"
-        puts '-=*                                    -=*'
-        puts '-=*    Selected move is a draw move!   -=*'
-        puts '-=*                                    -=*'
-        puts '-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*-=*'
-      end
-
-      i += 1
-    end
-  end
-
-  # Do you want to end or play again?
-  def end_game
-    puts "\n\n=----------- Do you want to play again? -----------="
-    puts "----------- Enter 'yes' or 'no' -----------"
-    @restart = gets.chomp
-
-    unless @restart == 'yes' || @restart == 'no'
-      puts "\n-!- ATTENTION -!- Please enter only 'yes' or 'no'. Other replies are invalid!"
-      end_game.call
-    end
-
-    case @restart
-    when 'yes'
-      puts "\n\n\n\n-*--*--*--*- You restarted the game! -*--*--*--*-\n\n\n\n"
-      # restart method
-      restart
-    when 'no'
-      puts '====================== The End ======================'
-    else
-      puts "Please enter only 'yes' or 'no', others inputs are invalid!"
-    end
-  end
-
-  def restart
-    welcome
-    input_usernames
-    username_validity
-    game_rules
-    combined_game_methods
-    end_game
-  end
-
-# interaction = StartGameInterface.new
-# interaction.welcome
-# interaction.input_usernames
-# interaction.username_validity
-# interaction.game_rules
-# interaction.combined_game_methods
-# interaction.end_game
+while my_board.turn_counter.to_i < 9
+  current_user = check_current_user(playerx, playero, my_board.turn_counter)
+  make_move(current_user.name, current_user.sign, my_board)
+end
