@@ -1,7 +1,6 @@
 require_relative './board.rb'
 
 class Game < Board
-
   WINNING_COMBINATIONS = [
     [1, 2, 3],
     [4, 5, 6],
@@ -12,6 +11,8 @@ class Game < Board
     [1, 5, 9],
     [3, 5, 7]
   ]
+
+
 end
 
 # class InnerBoard
