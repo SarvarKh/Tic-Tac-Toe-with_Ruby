@@ -54,4 +54,14 @@ class Board
      '------------',
      " #{@game_board[6]} | #{@game_board[7]} | #{@game_board[8]} "]
   end
+
+  def reference_board
+    <<-BOARD
+        1 | 2 | 3
+      ------------
+        4 | 5 | 6
+      ------------
+        7 | 8 | 9
+    BOARD
+  end
 end
