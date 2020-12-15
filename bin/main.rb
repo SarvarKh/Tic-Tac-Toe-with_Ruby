@@ -5,7 +5,7 @@ require_relative '../lib/board.rb'
 
 end_game = 'Y'
 
-while end_game == 'Y' || end_game == 'yes'
+while %(yes Y).include?(end_game)
   puts '**    Hey folks!    **'
   puts "Let's play Tic-Tac-Toe"
 
