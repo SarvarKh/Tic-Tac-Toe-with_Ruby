@@ -43,7 +43,7 @@ while %(yes Y).include?(end_game)
 
   while my_board.turn_counter.to_i < 9
     current_user = check_current_user(playerx, playero, my_board.turn_counter)
-    
+
     puts "#{current_user.name} - select the number from the table below"
     puts my_board.reference_board if my_board.turn_counter.positive?
     move = gets.chomp
@@ -59,9 +59,10 @@ while %(yes Y).include?(end_game)
     found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user.name)
     if found_winner
       puts "#{found_winner} won!"
-      puts "Do you want to play another round?\nEnter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
+      puts "Do you want to play another round?"
+      puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
       end_game = gets.chomp
-      if end_game == 'Y' || end_game == 'yes'
+      if %w(Y yes).include?(end_game)
         end_game
         my_board.turn_counter = 10
       else
