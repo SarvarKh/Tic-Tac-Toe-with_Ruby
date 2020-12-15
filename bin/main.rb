@@ -5,7 +5,7 @@ require_relative '../lib/board.rb'
 
 end_game = 'Y'
 
-while %(yes Y).include?(end_game)
+while %(yes Y y Yes YES).include?(end_game)
   puts '**    Hey folks!    **'
   puts "Let's play Tic-Tac-Toe"
 
@@ -47,7 +47,7 @@ while %(yes Y).include?(end_game)
     puts "#{current_user.name} - select the number from the table below"
     puts my_board.reference_board if my_board.turn_counter.positive?
     move = gets.chomp
-    while my_board.taken_move?(move, my_board.game_board)
+    while my_board.taken_move?(move, my_board.game_board) || move =~ /[^0-9]/
       puts 'Invalid number, please select another number'
       move = gets.chomp
       my_board.taken_move?(move, my_board.game_board)
@@ -62,7 +62,7 @@ while %(yes Y).include?(end_game)
       puts 'Do you want to play another round?'
       puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
       end_game = gets.chomp
-      %w[yes Y].include?(end_game) ? my_board.turn_counter = 8 : exit
+      %w[yes Y y Yes YES].include?(end_game) ? my_board.turn_counter = 8 : exit
       end_game
     end
 
