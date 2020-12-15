@@ -10,7 +10,7 @@ playerx = Player.new
 playerx.sign = 'x'
 puts "Enter user 'X' name."
 playerx.name = gets.chomp
-while playerx.name == ''
+while playerx.name =~ /[^a-zA-Z]/ || playerx.name == ''
   puts 'Invalid name, enter another name'
   playerx.name = gets.chomp
 end
@@ -19,7 +19,7 @@ playero = Player.new
 playero.sign = 'o'
 puts "Enter user 'O' name."
 playero.name = gets.chomp
-while playero.name == '' || playero.name == playerx.name
+while playero.name =~ /[^a-zA-Z]/ || playero.name == '' || playero.name == playerx.name
   puts 'Invalid name, enter another name'
   playero.name = gets.chomp
 end
