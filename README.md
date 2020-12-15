@@ -1,5 +1,5 @@
 # Tic-Tac-Toe-with_Ruby
-> This is a Tic-Tac-Toe game built by using OOP in Ruby.
+> This is a Tic-Tac-Toe game built using OOP in Ruby.
 
 ![screenshot](snapshot.png?raw=true)
 
