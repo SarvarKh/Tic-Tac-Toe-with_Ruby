@@ -45,7 +45,6 @@ while %(yes Y y Yes YES).include?(end_game)
     current_user = check_current_user(playerx, playero, my_board.turn_counter)
 
     puts "#{current_user.name} - select the number from the table below"
-    puts my_board.reference_board if my_board.turn_counter.positive?
     move = gets.chomp
     while my_board.taken_move?(move, my_board.game_board) || move =~ /[^0-9]/
       puts 'Invalid number, please select another number'
