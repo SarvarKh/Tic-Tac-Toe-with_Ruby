@@ -71,13 +71,13 @@ while %(yes Y).include?(end_game)
     end
 
     my_board.turn_counter += 1
-    puts 'It is draw!' if my_board.turn_counter == 9
-  end
 
-  if my_board.turn_counter == 9
-    puts 'Do you want to play another round?'
-    puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
-    end_game = gets.chomp
-    puts ''
+    if my_board.turn_counter == 9
+      puts 'It is draw!'
+      puts 'Do you want to play another round?'
+      puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
+      end_game = gets.chomp
+      puts ''
+    end
   end
 end
