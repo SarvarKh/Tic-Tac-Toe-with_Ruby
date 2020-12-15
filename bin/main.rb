@@ -59,12 +59,12 @@ while %(yes Y).include?(end_game)
     found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user.name)
     if found_winner
       puts "#{found_winner} won!"
-      puts "Do you want to play another round?"
+      puts 'Do you want to play another round?'
       puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
       end_game = gets.chomp
-      if %w(Y yes).include?(end_game)
+      if %w[yes Y].include?(end_game)
+        my_board.turn_counter = 9
         end_game
-        my_board.turn_counter = 10
       else
         exit
       end
@@ -75,7 +75,8 @@ while %(yes Y).include?(end_game)
   end
 
   if my_board.turn_counter == 9
-    puts "Do you want to play another round?\nEnter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
+    puts "Do you want to play another round?"
+    puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
     end_game = gets.chomp
     puts ''
   end
