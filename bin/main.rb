@@ -62,12 +62,8 @@ while %(yes Y).include?(end_game)
       puts 'Do you want to play another round?'
       puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
       end_game = gets.chomp
-      if %w[yes Y].include?(end_game)
-        my_board.turn_counter = 8
-        end_game
-      else
-        exit
-      end
+      %w[yes Y].include?(end_game) ? my_board.turn_counter = 8 : exit
+      end_game
     end
 
     unless my_board.game_board.include?(' ')
