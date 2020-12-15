@@ -75,7 +75,7 @@ while %(yes Y).include?(end_game)
   end
 
   if my_board.turn_counter == 9
-    puts "Do you want to play another round?"
+    puts 'Do you want to play another round?'
     puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
     end_game = gets.chomp
     puts ''
