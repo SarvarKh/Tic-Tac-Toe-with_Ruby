@@ -37,8 +37,14 @@ while %(yes Y).include?(end_game)
   puts my_board.reference_board
 
   # Game flow
-  def make_move(current_user, sign, my_board)
-    puts "#{current_user} - select the number from the table below"
+  def check_current_user(playerx, playero, turn_counter)
+    turn_counter.to_i.even? ? playerx : playero
+  end
+
+  while my_board.turn_counter.to_i < 9
+    current_user = check_current_user(playerx, playero, my_board.turn_counter)
+    
+    puts "#{current_user.name} - select the number from the table below"
     puts my_board.reference_board if my_board.turn_counter.positive?
     move = gets.chomp
     while my_board.taken_move?(move, my_board.game_board)
@@ -47,10 +53,10 @@ while %(yes Y).include?(end_game)
       my_board.taken_move?(move, my_board.game_board)
     end
 
-    my_board.move(move, sign, my_board)
+    my_board.move(move, current_user.sign, my_board)
     puts my_board.display
 
-    found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user)
+    found_winner = my_board.check_winner(my_board.boardx, my_board.boardo, current_user.name)
     if found_winner
       puts "#{found_winner} won!"
       puts "Do you want to play another round?\nEnter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
@@ -67,14 +73,6 @@ while %(yes Y).include?(end_game)
     puts 'It is draw!' if my_board.turn_counter == 9
   end
 
-  def check_current_user(playerx, playero, turn_counter)
-    turn_counter.to_i.even? ? playerx : playero
-  end
-
-  while my_board.turn_counter.to_i < 9
-    current_user = check_current_user(playerx, playero, my_board.turn_counter)
-    make_move(current_user.name, current_user.sign, my_board)
-  end
   if my_board.turn_counter == 9
     puts "Do you want to play another round?\nEnter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
     end_game = gets.chomp
