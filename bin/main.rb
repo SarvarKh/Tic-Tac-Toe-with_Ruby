@@ -63,21 +63,21 @@ while %(yes Y).include?(end_game)
       puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
       end_game = gets.chomp
       if %w[yes Y].include?(end_game)
-        my_board.turn_counter = 9
+        my_board.turn_counter = 8
         end_game
       else
         exit
       end
     end
 
-    my_board.turn_counter += 1
-
-    if my_board.turn_counter == 9
+    unless my_board.game_board.include?(' ')
       puts 'It is draw!'
       puts 'Do you want to play another round?'
       puts "Enter 'Y' or 'yes' if you want to continue. Otherwise press any key to end the game!"
       end_game = gets.chomp
       puts ''
     end
+
+    my_board.turn_counter += 1
   end
 end
