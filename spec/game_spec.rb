@@ -110,4 +110,19 @@ describe 'display' do
     expect(expectation).to eql(actual)
   end
 end
+ ### reference_board
+ describe 'reference_board' do
+  it 'returns reference board' do
+    expectation = my_board.reference_board
+    actual =
+      <<-BOARD
+        1 | 2 | 3
+      ------------
+        4 | 5 | 6
+      ------------
+        7 | 8 | 9
+      BOARD
+    expect(expectation).to eql(actual)
+  end
+end
 end
