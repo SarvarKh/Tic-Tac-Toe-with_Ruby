@@ -70,6 +70,7 @@ describe Board do
       expect(expectation).to eql(actual)
     end
   end
+
   ### check_winner
   describe 'check_winner' do
     it 'returns winner if the winner meet winning combinations ' do
@@ -79,50 +80,51 @@ describe Board do
       expect(expectation).to eql(actual)
     end  
 
+    it 'returns winner if the winner meet winning combinations ' do
+      my_board.boardo = [3, 5, 7]
+      expectation = my_board.check_winner(my_board.boardx, my_board.boardo, 'Juwon')
+      actual = 'Juwon'
+      expect(expectation).to eql(actual)
+    end
+  end
+  ### display
+  describe 'display' do
+    it 'returns current game board ' do
+      my_board.game_board = [' ', 'x', 'o', 'x', ' ', ' ', ' ', ' ', ' ']
+      expectation = my_board.display
+      actual = ['   | x | o ',
+                '------------',
+                ' x |   |   ',
+                '------------',
+                '   |   |   ']
+      expect(expectation).to eql(actual)
+    end
 
-it 'returns winner if the winner meet winning combinations ' do
-    my_board.boardo = [3, 5, 7]
-    expectation = my_board.check_winner(my_board.boardx, my_board.boardo, 'Juwon')
-    actual = 'Juwon'
-    expect(expectation).to eql(actual)
+    it 'returns current game board ' do
+      my_board.game_board = %w[x x o x o o o x x]
+      expectation = my_board.display
+      actual = [' x | x | o ',
+                '------------',
+                ' x | o | o ',
+                '------------',
+                ' o | x | x ']
+      expect(expectation).to eql(actual)
+    end
   end
-end
-### display
-describe 'display' do
-  it 'returns current game board ' do
-    my_board.game_board = [' ', 'x', 'o', 'x', ' ', ' ', ' ', ' ', ' ']
-    expectation = my_board.display
-    actual = ['   | x | o ',
-              '------------',
-              ' x |   |   ',
-              '------------',
-              '   |   |   ']
-    expect(expectation).to eql(actual)
+  
+  ### reference_board
+  describe 'reference_board' do
+    it 'returns reference board' do
+      expectation = my_board.reference_board
+      actual =
+        <<-BOARD
+          1 | 2 | 3
+        ------------
+          4 | 5 | 6
+        ------------
+          7 | 8 | 9
+        BOARD
+      expect(expectation).to eql(actual)
+    end
   end
-  it 'returns current game board ' do
-    my_board.game_board = %w[x x o x o o o x x]
-    expectation = my_board.display
-    actual = [' x | x | o ',
-              '------------',
-              ' x | o | o ',
-              '------------',
-              ' o | x | x ']
-    expect(expectation).to eql(actual)
-  end
-end
- ### reference_board
- describe 'reference_board' do
-  it 'returns reference board' do
-    expectation = my_board.reference_board
-    actual =
-      <<-BOARD
-        1 | 2 | 3
-      ------------
-        4 | 5 | 6
-      ------------
-        7 | 8 | 9
-      BOARD
-    expect(expectation).to eql(actual)
-  end
-end
 end
