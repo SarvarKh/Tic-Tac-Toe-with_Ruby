@@ -44,6 +44,13 @@ Please Note that you must have Git installed on your PC, this can be done [here]
 6.	To win the game, a player must fill out a line with his symbol vertically, horizontally, or diagonally.
 7.	A draw is reached when neither player manages the above and the grid is filled.
 
+## How to run test?
+
+1. Follow Getting Started section to download the game
+2. Open/navigate to the project directory in your terminal
+3. Run rspec in your terminal to see if the test cases passes your RSpec test
+You shall see number of test cases and number of failures.
+4. Open the link [Introduction to RSpec](https://www.theodinproject.com/courses/ruby-programming/lessons/introduction-to-rspec) if you want to learn more about RSpec.
 
 ## Authors
 
@@ -52,6 +59,12 @@ Please Note that you must have Git installed on your PC, this can be done [here]
 - GitHub: [@githubhandle](https://github.com/SarvarKh)
 - Twitter: [@twitterhandle](https://twitter.com/KhalimovSarvar)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/sarvar-khalimov/)
+
+👤 **Oluwadare Juwon**
+
+- GitHub: [@githubhandle](https://github.com/wintan1418)
+- Twitter: [@twitterhandle](https://twitter.com/oluwadarejuwon)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/oluwadare-juwon-048a391a8/)
 
 ## 🤝 Contributing
 
