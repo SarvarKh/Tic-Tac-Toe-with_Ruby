@@ -78,7 +78,7 @@ describe Board do
       expectation = my_board.check_winner(my_board.boardx, my_board.boardo, 'Sarvar')
       actual = 'Sarvar'
       expect(expectation).to eql(actual)
-    end  
+    end
 
     it 'returns winner if the winner meet winning combinations ' do
       my_board.boardo = [3, 5, 7]
@@ -111,7 +111,7 @@ describe Board do
       expect(expectation).to eql(actual)
     end
   end
-  
+
   ### reference_board
   describe 'reference_board' do
     it 'returns reference board' do

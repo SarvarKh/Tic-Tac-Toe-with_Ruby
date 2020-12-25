@@ -76,4 +76,3 @@ while %(yes Y y Yes YES).include?(end_game)
     my_board.turn_counter += 1
   end
 end
- 
