@@ -54,4 +54,20 @@ describe Board do
       expect(expectation).to eql(actual)
     end
   end
+
+  describe 'taken_move?' do
+    it 'returns false since position in the board is not taken (not empty) ' do
+      my_board.game_board = [' ', 'x', 'o', 'x', ' ', ' ', ' ', ' ', ' ']
+      expectation = my_board.taken_move?(1, my_board.game_board)
+      actual = false
+      expect(expectation).to eql(actual)
+    end
+
+    it 'returns true since position in the board has been taken (filled) ' do
+      my_board.game_board = [' ', 'x', 'o', 'x', ' ', ' ', ' ', ' ', ' ']
+      expectation = my_board.taken_move?(3, my_board.game_board)
+      actual = true
+      expect(expectation).to eql(actual)
+    end
+  end
 end
