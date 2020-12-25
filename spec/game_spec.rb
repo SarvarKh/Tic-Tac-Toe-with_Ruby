@@ -87,4 +87,27 @@ it 'returns winner if the winner meet winning combinations ' do
     expect(expectation).to eql(actual)
   end
 end
+### display
+describe 'display' do
+  it 'returns current game board ' do
+    my_board.game_board = [' ', 'x', 'o', 'x', ' ', ' ', ' ', ' ', ' ']
+    expectation = my_board.display
+    actual = ['   | x | o ',
+              '------------',
+              ' x |   |   ',
+              '------------',
+              '   |   |   ']
+    expect(expectation).to eql(actual)
+  end
+  it 'returns current game board ' do
+    my_board.game_board = %w[x x o x o o o x x]
+    expectation = my_board.display
+    actual = [' x | x | o ',
+              '------------',
+              ' x | o | o ',
+              '------------',
+              ' o | x | x ']
+    expect(expectation).to eql(actual)
+  end
+end
 end
